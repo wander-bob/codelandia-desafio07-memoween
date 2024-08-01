@@ -1,0 +1,84 @@
+:root {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Inter';
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+textarea,
+button,
+fieldset {
+  border: none;
+  background-color: transparent;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background-color: #000014;
+  min-height: 100vh;
+  padding: 8rem;
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  min-height: 100%;
+  /* fill: rgba(137, 88, 255, 0.40); */
+  /* filter: blur(200px); */
+}
+
+#app h1 {
+  font-family: 'Jolly Lodger';
+  font-size: 9.6rem;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 8.2rem;
+  color: #fff;
+  -webkit-text-stroke-width: medium;
+  -webkit-text-stroke-color: #8958FF;
+}
+
+.cards-container {
+  display: grid;
+  place-items: center;
+  gap: 3.2rem;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.card {
+  background-color: #8958FF;
+  border-radius: 1.2rem;
+  min-height: 17.6rem;
+  min-width: 17.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card h2 {
+  text-align: center;
+  font-family: 'Jolly Lodger';
+  font-size: 7.2rem;
+  font-weight: normal;
+  color: #fff;
+}
+
+.card.turned {
+  background-color: #FFE3BD;
+}
