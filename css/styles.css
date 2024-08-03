@@ -43,6 +43,7 @@ body {
 }
 
 #app h1 {
+  text-align: center;
   font-family: 'Jolly Lodger';
   font-size: 9.6rem;
   font-weight: 400;
@@ -69,6 +70,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .card h2 {
@@ -81,4 +83,8 @@ body {
 
 .card.turned {
   background-color: #FFE3BD;
+}
+
+.hidden {
+  display: none;
 }
