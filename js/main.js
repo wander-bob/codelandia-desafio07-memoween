@@ -4,6 +4,8 @@ let turnedCards = [];
 let successCount = 0;
 
 const cards_container = document.querySelector('.cards-container');
+const resetButton = document.querySelector('#reset');
+const modal = document.querySelector('#modal');
 
 while (cardsList.length <= 17) {
   cardNumber = Number(Math.random() * (9 - 1) + 1).toFixed();
@@ -16,10 +18,10 @@ while (cardsList.length <= 17) {
 
 for (let i = 0; i < cardsList.length; i++) {
   let card = `
-   <div class="card">
+   <button class="card">
       <h2>Buuh!</h2>
       <img class="hidden" src="./assets/card0${cardsList[i]}.svg"/>
-   </div>`;
+   </button>`;
   cards_container.innerHTML += card;
 }
 
@@ -28,8 +30,9 @@ const cards = document.querySelectorAll('.card');
 function cardTurnHandler(card) {
   const cardTitle = card.querySelector('h2');
   const cardImg = card.querySelector('img');
-
+  card.disabled = !card.disabled;
   card.classList.toggle('turned');
+  card.classList.toggle('flip');
   cardTitle.classList.toggle('hidden');
   cardImg.classList.toggle('hidden');
   turnedCards.push(card);
@@ -39,13 +42,11 @@ function handleInteractionCount() {
   if (turnedCards.length === 2) {
     const [card1, card2] = turnedCards;
     if (card1.querySelector('img').src === card2.querySelector('img').src) {
-      console.log('done!');
       successCount++;
       turnedCards = [];
       return;
     }
     setTimeout(() => {
-      console.log('wrong');
       turnedCards.forEach((card) => {
         cardTurnHandler(card);
       });
@@ -53,8 +54,11 @@ function handleInteractionCount() {
       return;
     }, 500);
   }
+}
+
+function showSuccessScreen() {
   if (successCount === 9) {
-    console.log('You win!!!');
+    modal.classList.remove('hidden');
   }
 }
 
@@ -62,5 +66,9 @@ cards.forEach((cardItem) => {
   cardItem.addEventListener('click', () => {
     cardTurnHandler(cardItem);
     handleInteractionCount();
+    showSuccessScreen();
   });
+});
+resetButton.addEventListener('click', () => {
+  modal.classList.add('hidden');
 });

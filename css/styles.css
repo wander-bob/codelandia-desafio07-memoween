@@ -36,23 +36,84 @@ body {
   justify-content: center;
 }
 
-#app {
-  min-height: 100%;
+.hidden {
+  display: none;
 }
 
-#app h1 {
+#modal {
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  position: fixed;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#modal .modal-content {
+  padding: 4rem 7.5rem;
+  max-width: 64rem;
+  border-radius: 1.6rem;
+  margin-inline: auto;
+  margin-top: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background-color: #000014;
+}
+
+#modal .modal-content img {
+  position: absolute;
+  right: -2rem;
+  top: -2rem;
+}
+
+#modal .modal-content p {
+  text-align: center;
+  margin-top: 3.2rem;
+  font-family: 'Inter';
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 160%;
+}
+
+#modal .modal-content button {
+  margin-top: 7rem;
+  max-width: fit-content;
+  padding: 1.2rem 8rem;
+  background-color: #8958FF;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 600;
+  border-radius: 0.6rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+#modal .modal-content button:hover {
+  filter: opacity(0.8);
+}
+
+#app {
+  min-height: 100%;
+  z-index: 0;
+}
+
+#app h1,
+#modal .modal-content h1 {
   text-align: center;
   font-family: 'Jolly Lodger';
   font-size: 9.6rem;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 8.2rem;
   color: #fff;
   -webkit-text-stroke-width: medium;
   -webkit-text-stroke-color: #8958FF;
 }
 
 .cards-container {
+  margin-top: 8.2rem;
   display: grid;
   place-items: center;
   gap: 3.2rem;
@@ -85,8 +146,19 @@ body {
 
 .card.turned {
   background-color: #FFE3BD;
+  cursor: not-allowed;
 }
 
-.hidden {
-  display: none;
+.flip {
+  animation: flip 0.3s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(-180deg);
+  }
+
+  100% {
+    transform: rotateX(-360deg)
+  }
 }
