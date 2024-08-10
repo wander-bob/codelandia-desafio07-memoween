@@ -71,4 +71,5 @@ cards.forEach((cardItem) => {
 });
 resetButton.addEventListener('click', () => {
   modal.classList.add('hidden');
+  cards.forEach((card) => cardTurnHandler(card));
 });
